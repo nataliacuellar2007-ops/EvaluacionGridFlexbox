@@ -1,7 +1,4 @@
-
-
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,400&family=Work+Sans:wght@400;600&display=swap');
 
 /* Reset básico */
 * {
@@ -10,7 +7,6 @@
   box-sizing: border-box;
 }
 
-/* Evita que las imágenes deformen contenedores */
 img {
   max-width: 100%;
   height: auto;
@@ -26,44 +22,40 @@ body {
 
 /* ==================== HEADER ==================== */
 .header {
-  display: grid; /* Uso grid porque necesito columnas proporcionales */
-  grid-template-columns: 25% minmax(0, 1fr); /* Logo fijo + título fluido */
+  display: grid;
+  grid-template-columns: 25% minmax(0, 1fr);
   align-items: center;
   background: #d9d9d9;
   padding: 0.5em 1em;
   gap: 1rem;
 }
 
-.logo {
-  justify-self: start;
-}
 .logo img {
   max-width: 78%;
   margin: 0 auto;
 }
 
-/* Título responsivo */
 .titulo {
   font-family: "Merriweather", serif;
   text-align: center;
   font-weight: 400;
   font-size: 3em;
   color: #4a6785;
-  min-width: 0; /* Evita romper el grid */
+  min-width: 0;
 }
 
 /* ==================== MENÚ ==================== */
 .menu {
-  justify-content: center;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   background-color: #5d85ad;
 }
 
 .menu ul {
   list-style-type: none;
-  display: flex; /* Uso flex para menú horizontal adaptable */
-  flex-wrap: wrap; 
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .menu a {
@@ -78,12 +70,19 @@ body {
   background: #455a64;
 }
 
-/* ---- Sección categorías ---- */
+/* ==================== CONTENIDO PRINCIPAL ==================== */
+.contenido {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr; /* categorías más grandes */
+  gap: 30px;
+  padding: 40px;
+  align-items: start;
+}
+
 .categorias {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 20px;
-  padding: 40px;
 }
 
 .card {
@@ -116,10 +115,21 @@ body {
   transform: translateY(-5px);
 }
 
+aside h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.playlist {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
 /* ==================== FOOTER ==================== */
 .footer {
-  display: grid; /* Columnas adaptables */
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   background: #1a1a1a;
   color: white;
@@ -129,9 +139,8 @@ body {
 
 .footer h4 { margin-bottom: 0.5em; }
 .footer ul { list-style: none; }
-.footer li { margin-bottom: 0.3em; color: #ffffff;}
-
-.footer li a {color: #ffffff;}
+.footer li { margin-bottom: 0.3em; }
+.footer li a { color: #ffffff; }
 
 .redes {
   margin-top: 1rem;
@@ -143,8 +152,7 @@ body {
 }
 
 .redes img {
-  width: 40px; /* ajusta tamaño del ícono */
-  height: auto;
+  width: 40px;
   transition: transform 0.3s, opacity 0.3s;
 }
 
@@ -153,25 +161,22 @@ body {
   opacity: 0.8;
 }
 
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 900px) {
-  /* Header en 1 columna */
   .header {
     grid-template-columns: 1fr;
   }
 
-.menu ul {
-  flex-direction: column;
-}
+  .menu ul {
+    flex-direction: column;
+  }
 
   .menu a {
-    text-align: center;
-    display: block;
-    width: 100%;      /* ocupa todo el ancho */
-    padding: 1em;
+    width: 100%;
   }
 
   .titulo {
-    display: none; /* opcional: ocultar título en pantallas pequeñas */
+    display: none;
   }
 
   .logo {
@@ -180,6 +185,9 @@ body {
 
   .logo img {
     max-width: 180px;
-    
+  }
+
+  .contenido {
+    grid-template-columns: 1fr; /* categorías y playlist apilados */
   }
 }
